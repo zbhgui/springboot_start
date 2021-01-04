@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace:改mapper.xml映射文件的唯一标识并且必须和数据处理层的接口的路径相同-->
+<mapper namespace="com.example.start.mapper.BookMapper">
+    <!--   必须添加property属性 ，区别于是否加主键-->
+    <resultMap id="BookMap" type="com.example.start.pojo.Book">
+        <id column="id" property="id" javaType="INTEGER" jdbcType="INTEGER"/>
+        <result column="name" property="name" javaType="String" jdbcType="VARCHAR"/>
+        <result column="author" property="author" javaType="String" jdbcType="VARCHAR"/>
+        <result column="createdate" property="createdate" javaType="String" jdbcType="VARCHAR"/>
+        <result column="info" property="info" javaType="String" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAllBooks" resultMap="BookMap">
+        select * from book order by createdate LIMIT #{offset},#{limit};
+    </select>
+
+    <select id="selectOneBookbyId" resultType="com.example.start.pojo.Book" parameterType="Integer">
+      <if test="bookId != null and bookId !='' ">
+          select id,name,author,createdate,info from book where id = #{bookId};
+      </if>
+    </select>
+
+    <insert id="addBook" parameterType="com.example.start.pojo.Book">
+        insert into book(name,author,createdate,info) value
+         (#{name,jdbcType=VARCHAR},#{author,jdbcType=VARCHAR},#{createdate,jdbcType=VARCHAR},#{info,jdbcType=VARCHAR});
+    </insert>
+    <update id="updateBook" parameterType="com.example.start.pojo.Book">
+        update book
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="author != null and author != ''">
+                author = ${author},
+            </if>
+            <if test="createdate != null and createdate != ''">
+                createdate = #{createdate},
+            </if>
+            <if test="info != null and info != ''">
+                info = #{info}
+            </if>
+        </set>
+      where id = #{id,jdbcType=INTEGER};
+    </update>
+    <delete id="deleteBook">
+      delete from book where id = #{id} and name = #{name};
+    </delete>
+</mapper>
