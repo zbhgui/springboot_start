@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author:
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/login")
 public class LoginController {
 
   @Autowired
