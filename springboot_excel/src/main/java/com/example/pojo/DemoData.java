@@ -12,12 +12,15 @@ import java.util.Date;
  */
 @Data
 public class DemoData {
-  @ExcelProperty(index = 0)
+  @ExcelProperty(value = "名称",index = 0)
   private String name;
-  @ExcelProperty(index = 1)
+  @ExcelProperty(value = "类型",index = 1)
   private String type;
-  @ExcelProperty(index = 2)
+  @ExcelProperty(value = "注释",index = 2)
   private String comment;
-  @ExcelProperty(index = 3)
+  @ExcelProperty(value = "时间",index = 3)
   private Date date;
+  @ExcelProperty(value = "数值",index = 4)
+  private double count;
 }
+

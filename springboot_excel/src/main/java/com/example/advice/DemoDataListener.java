@@ -20,7 +20,7 @@ import java.util.Map;
  * @author:
  */
 @Slf4j
-// 有个很重要的点 DemoDataListener 不能被spring管理，要每次读取excel都要new,然后里面用到spring可以构造方法传进去
+// DemoDataListener 不能被spring管理，要每次读取excel都要new,然后里面用到spring可以构造方法传进去
 public class DemoDataListener extends AnalysisEventListener<DemoData> {
   /**
    * 每隔5条存储数据库，实际使用中可以3000条，然后清理list ，方便内存回收
