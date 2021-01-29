@@ -9,6 +9,7 @@ import com.example.pojo.DemoData;
 import com.example.service.CreditInfoService;
 import org.assertj.core.api.AbstractCompletableFutureAssert;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.autoconfigure.transaction.PlatformTransactionManagerCustomizer;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
@@ -18,6 +19,9 @@ class SpringbootExcelApplicationTests {
 
   @Test
   void contextLoads() {
+
+
+
     String fileName = "C:\\Users\\zbh10\\Desktop\\demo.xlsx";
 //    EasyExcel.read(fileName,DemoData.class,new MyexcelListener(new CreditInfoService())).sheet().doRead();
     ExcelReader excelread =null;
